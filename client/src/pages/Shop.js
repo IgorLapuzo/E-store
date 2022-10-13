@@ -1,8 +1,11 @@
 import React from 'react';
 import Container from 'react-bootstrap/esm/Container';
+import DeviceList from '../components/DeviceList';
 import Row from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import TypeBar from '../components/TypeBar';
+import BrandBar from '../components/BrandBar';
 
 const Shop = () => {
 	return (
@@ -12,7 +15,8 @@ const Shop = () => {
 					<TypeBar/>
 				</Col>
 				<Col md={9}>
-					
+					<BrandBar/>
+					<DeviceList/>
 				</Col>
 			</Row>
 
