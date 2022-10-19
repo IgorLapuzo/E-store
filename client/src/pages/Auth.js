@@ -5,10 +5,21 @@ import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/esm/Button';
+import { login, registration } from '../http/userAPI';
 
 const Auth = () => {
 	const location = useLocation()
 	const isLogin = location.pathname === LOGIN_ROUTE
+
+	const click = async () => {
+		if (isLogin) {
+			const response = await login();
+		} else {
+			const response = await registration()
+			console.log(response)
+		}
+		
+	}
 	
 	return (
 		<Container 
