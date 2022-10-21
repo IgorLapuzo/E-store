@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import Admin from './pages/Admin';
 import Basket from './pages/Basket';
 import DevicePage from './pages/DevicePage';

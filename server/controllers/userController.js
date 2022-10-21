@@ -16,10 +16,10 @@ class UserController {
 		const {email, password, role} = req.body
 		if (!email || !password) {
 			return next(ApiError.badRequest('Uncorrect email or password'))
-		}
+		} 
 		const candidate = await User.findOne({where: {email}})
 		if (candidate) {
-			return next(ApiError. badRequest('User with this email already exist'))
+			return next(ApiError.badRequest('User with this email already exist'))
 		}
 		const hashPassword = await bcrypt.hash(password, 5)
 		const user = await User.create({email, role, password: hashPassword})

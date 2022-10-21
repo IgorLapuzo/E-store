@@ -9,11 +9,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 
-
-
 const NavBar = observer(() => {
 	const { user } = useContext(Context)
 	const navigate = useNavigate()
+	const logOut = () => {
+		user.setUser({})
+		user.setIsAuth(false)
+	}
+
 	return (
 		<Navbar bg="dark" variant="dark">
 			<Container>
@@ -28,7 +31,7 @@ const NavBar = observer(() => {
 						</Button>
 						<Button 
 							variant={'outline-light'} 
-							onClick={() => navigate(LOGIN_ROUTE)}
+							onClick={() => logOut()}
 							className ='ms-2'
 							>
 								Log Out
@@ -36,7 +39,7 @@ const NavBar = observer(() => {
 					</Nav>
 					:
 					<Nav className="ml-auto" style={{ color: 'white' }}>
-						<Button variant={'outline-light'} onClick={() => user.setIsAuth(true)}>Log In</Button>
+						<Button variant={'outline-light'} onClick={() => navigate(LOGIN_ROUTE)}>Log In</Button>
 					</Nav>
 				}
 			</Container> 

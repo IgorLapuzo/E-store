@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/esm/Button';
 import { login, registration } from '../http/userAPI';
 import { observer } from 'mobx-react-lite';
-import { Context } from '..';
+import { Context } from '../index';
 
 
 const Auth = observer( () => {

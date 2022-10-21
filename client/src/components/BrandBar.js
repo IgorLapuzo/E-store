@@ -3,11 +3,6 @@ import { observer } from 'mobx-react-lite';
 import { Context } from '../index';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import ListGroup from 'react-bootstrap/ListGroup';
-import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
-
-
 
 const BrandBar = observer(() => {
 	const { device } = useContext(Context)
