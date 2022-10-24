@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import bigStar from '../assets/bigStar.png';
 import Col from 'react-bootstrap/Col';
@@ -6,23 +6,22 @@ import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-
+import { useParams } from 'react-router-dom';
+import { fetchOneDevice } from '../http/deviceAPI'
+ 
 const DevicePage = () => {
 
-	const device = {id: 6, name: 'Iphone 13 pro', price: 2100, rating: 0, img: 'https://www.reliancedigital.in/medias/Apple-iPhone-13-Pro-Smartphones-491997729-i-2-1200Wx1200H?context=bWFzdGVyfGltYWdlc3wxODQ4Nzh8aW1hZ2UvanBlZ3xpbWFnZXMvaDYwL2hjYi85NjM3MjQ2MDc0OTEwLmpwZ3xkMjA5M2ZkMGU5NjRlZjkxZjAyYjZjOTkxYmViZWU0ZDQ2Yzk0NDE2NGM0ZGY1YTk1MzdhNTQ1YmY1Njg5ZDJl'}
-	const description = [
-		{id:1, title: 'RAM', description: '5Gb'},
-		{id:2, title: 'Camera', description: '12Mp'},
-		{id:3, title: 'CP', description: 'Pentium 5'},
-		{id:4, title: 'Numper of cores', description: '8'},
-		{id:5, title: 'Accumulator', description: '4000'},
-		]
+	const [device, setDevice] = useState({info: []})
+	const {id} = useParams()
+	useEffect(() => {
+		fetchOneDevice(id).then(data => setDevice(data))
+	}, [])
 
 	return (
 		<Container className="mt-3">
 			<Row>
 				<Col md={4}>
-					<Image width={300} height={300} src={device.img} />
+					<Image width={300} height={300} src={process.env.REACT_APP_API_URL + device.img} />
 				</Col>
 				<Col md={4}>
 					<Row className='d-flex flex-column alight-items-center'>
@@ -47,7 +46,7 @@ const DevicePage = () => {
 			</Row>
 			<Row className='d-flex flex-column m-3'>
 				<h1>Description</h1>
-				{description.map((info, index) =>
+				{device.info.map((info, index) =>
 					<Row key={info.id} style={{background: index % 2 === 0 ? 'lightgray' : 'transparent', padding: 10}}>
 						{info.title}: {info.description}
 					</Row>	
